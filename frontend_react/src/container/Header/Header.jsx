@@ -63,7 +63,7 @@ const Header = () => {
 					(circle, index) => (
 						<div
 							className='circle-cmp app__flex'
-							key={`circle-index`}
+							key={`circle-${index}`}
 						>
 							<img src={circle} alt='circle' />
 						</div>
