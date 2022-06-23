@@ -16,7 +16,7 @@ const About = () => {
 	}, []);
 
 	return (
-		<>
+		<React.Fragment>
 			<h2 className='head-text'>
 				I Know That <span>Great Apps</span>
 				<br /> means <span>Great Business</span>
@@ -41,7 +41,7 @@ const About = () => {
 					</motion.div>
 				))}
 			</div>
-		</>
+		</React.Fragment>
 	);
 };
 

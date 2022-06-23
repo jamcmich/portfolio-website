@@ -38,7 +38,7 @@ const Work = () => {
 	};
 
 	return (
-		<>
+		<React.Fragment>
 			<h2 className='head-text'>
 				My Creative <span>Portfolio</span> Section
 			</h2>
@@ -122,7 +122,7 @@ const Work = () => {
 					</div>
 				))}
 			</motion.div>
-		</>
+		</React.Fragment>
 	);
 };
 

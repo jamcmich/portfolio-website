@@ -9,6 +9,7 @@ import './Skills.scss';
 const Skills = () => {
 	const [experiences, setExperiences] = useState([]);
 	const [skills, setSkills] = useState([]);
+	const [tooltip, showTooltip] = useState(true);
 
 	useEffect(() => {
 		const query = '*[_type == "experiences"]';
@@ -24,7 +25,7 @@ const Skills = () => {
 	}, []);
 
 	return (
-		<>
+		<React.Fragment>
 			<h2 className='head-text'>Skills & Experiences</h2>
 
 			<div className='app__skills-container'>
@@ -34,7 +35,7 @@ const Skills = () => {
 							whileInView={{ opacity: [0, 1] }}
 							transition={{ duration: 0.5 }}
 							className='app__skills-item app__flex'
-							key={skill.name}
+							key={skill._createdAt}
 						>
 							<div
 								className='app__flex'
@@ -49,25 +50,36 @@ const Skills = () => {
 						</motion.div>
 					))}
 				</motion.div>
+
 				<div className='app__skills-exp'>
 					{experiences.map((experience) => (
 						<motion.div
 							className='app__skills-exp-item'
-							key={experience.year}
+							key={experience._createdAt}
 						>
 							<div className='app__skills-exp-year'>
 								<p className='bold-text'>{experience.year}</p>
 							</div>
+
 							<motion.div className='app__skills-exp-works'>
 								{experience.works.map((work) => (
-									<>
+									<React.Fragment key={work._key}>
 										<motion.div
 											whileInView={{ opacity: [0, 1] }}
 											transition={{ duration: 0.5 }}
 											className='app__skills-exp-work'
 											data-tip
+											onMouseEnter={() =>
+												showTooltip(true)
+											}
+											onMouseLeave={() => {
+												showTooltip(false);
+												setTimeout(
+													() => showTooltip(true),
+													50
+												);
+											}}
 											data-for={work.name}
-											key={work.name}
 										>
 											<h4 className='bold-text'>
 												{work.name}
@@ -76,22 +88,25 @@ const Skills = () => {
 												{work.company}
 											</p>
 										</motion.div>
-										<ReactTooltip
-											id={work.name}
-											effect='solid'
-											arrowColor='#fff'
-											className='skills-tooltip'
-										>
-											{work.desc}
-										</ReactTooltip>
-									</>
+
+										{tooltip && (
+											<ReactTooltip
+												id={work.name}
+												effect='solid'
+												arrowColor='#fff'
+												className='skills-tooltip'
+											>
+												{work.desc}
+											</ReactTooltip>
+										)}
+									</React.Fragment>
 								))}
 							</motion.div>
 						</motion.div>
 					))}
 				</div>
 			</div>
-		</>
+		</React.Fragment>
 	);
 };
 
