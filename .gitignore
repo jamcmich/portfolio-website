@@ -2,3 +2,4 @@
 backend_sanity/node_modules
 frontend_react/node_modules
 frontend_react/.env
+/node_modules

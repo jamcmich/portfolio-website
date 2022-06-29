@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:react": "cd frontend_react && npm start",
+    "start:sanity": "cd backend_sanity && sanity start",
+    "dev": "concurrently npm:start:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamcmich/portfolio-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamcmich/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/jamcmich/portfolio-website#readme",
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
+}
